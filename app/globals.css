@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: light;
+  --color-sand: #faf6f1;
+  --color-sand-dark: #f0e9df;
+  --color-coral: #f4845f;
+  --color-coral-light: #fff0eb;
+  --color-teal: #2a9d8f;
+  --color-teal-light: #e8f5f3;
+  --color-navy: #264653;
+  --color-amber: #e9c46a;
+  --color-amber-light: #fdf8ec;
+}
+
+@theme inline {
+  --color-sand: var(--color-sand);
+  --color-sand-dark: var(--color-sand-dark);
+  --color-coral: var(--color-coral);
+  --color-coral-light: var(--color-coral-light);
+  --color-teal: var(--color-teal);
+  --color-teal-light: var(--color-teal-light);
+  --color-navy: var(--color-navy);
+  --color-amber: var(--color-amber);
+  --color-amber-light: var(--color-amber-light);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-cairo: var(--font-cairo);
+  --font-baloo: var(--font-baloo);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-sand);
+  color: var(--color-navy);
+  font-family: var(--font-cairo), var(--font-geist-sans), sans-serif;
+  min-height: 100dvh;
+}
+
+/* Subtle dotted pattern on the body background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle, #e9c46a18 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-cairo), sans-serif;
+}
+
+[dir="ltr"] body {
+  font-family: var(--font-geist-sans), var(--font-cairo), sans-serif;
+}
+
+/* Heading font override */
+h1, h2, h3 {
+  font-family: var(--font-baloo), var(--font-cairo), sans-serif;
+}
+
+/* Custom selection color */
+::selection {
+  background: #f4845f40;
+  color: var(--color-navy);
+}

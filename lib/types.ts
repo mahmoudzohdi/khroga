@@ -1,0 +1,28 @@
+export interface Place {
+  timestamp: string;
+  nameAr: string;
+  nameEn: string;
+  descriptionAr: string;
+  descriptionEn: string;
+  addressAr: string;
+  addressEn: string;
+  governorate: string;
+  area: string;
+  mapLocation: string;
+  placeType: string;
+  price: string;
+  priceUnit: string;
+  suitableAge: string;
+  placeNature: string;
+  websiteLink: string;
+  workingHours: string;
+  familyFriendly: string;
+  kidsFriendly: string;
+  parking: string;
+  reservationNeeded: string;
+  socialMediaLinks: string;
+  placePhotos: string;
+  menuPhotos: string;
+  notes: string;
+  slug: string;
+}
