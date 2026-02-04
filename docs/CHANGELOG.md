@@ -17,4 +17,24 @@
 - **Home Page**: Server component feeding data to client-side listing with search/filter state (`app/page.tsx`, `components/places-listing.tsx`)
 - **Detail Page**: Full place info with photo gallery, info grid, tags, map link, social links (`app/places/[slug]/page.tsx`, `components/place-detail.tsx`)
 - **Footer**: Simple bilingual footer (`components/footer.tsx`)
-- **Build**: Production build passes, ESLint clean, 7 static pages generated
+- **Build**: Production build passes, ESLint clean, static pages generated
+
+### Bug Fixes
+- Fixed CSV parser to handle multiline quoted fields (addresses, working hours, notes)
+- Fixed header trimming for CSV headers with trailing spaces from Google Sheets
+- Fixed duplicate React key error by ensuring unique slugs for all places
+- Disabled dark mode — forced light theme to prevent black background on dark OS settings
+- Skipped Google Drive images (private, require auth) — showing placeholders instead
+
+### UI Redesign — "Sunny Playground"
+- New color palette: sand (#faf6f1), coral (#f4845f), teal (#2a9d8f), navy (#264653), amber (#e9c46a)
+- Added Baloo 2 font for playful headings
+- Subtle dotted background pattern
+- Coral accent badges on place cards
+- Navy footer with sand text
+- Removed all dark mode CSS
+
+### Documentation
+- Created `docs/CURRENT-STATE.md` — full architecture and implementation reference
+- Created `docs/NEXT-STEPS.md` — prioritized roadmap for future development
+- Updated `docs/CHANGELOG.md`
