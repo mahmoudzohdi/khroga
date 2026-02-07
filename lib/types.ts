@@ -21,6 +21,7 @@ export interface Place {
   parking: string;
   reservationNeeded: string;
   socialMediaLinks: string;
+  phoneNumber: string;
   placePhotos: string;
   menuPhotos: string;
   notes: string;
