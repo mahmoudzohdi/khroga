@@ -10,7 +10,7 @@ interface PlaceCardProps {
 }
 
 export default function PlaceCard({ place }: PlaceCardProps) {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const name = getLocalizedField(place, "name", lang);
 
@@ -81,9 +81,70 @@ export default function PlaceCard({ place }: PlaceCardProps) {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span className="line-clamp-1">
+            <span className="line-clamp-1 flex-1">
               {[place.governorate, place.area].filter(Boolean).join(" - ")}
             </span>
+            {place.mapLocation && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(place.mapLocation, "_blank", "noopener,noreferrer");
+                }}
+                className="shrink-0 rounded-full bg-teal/10 p-1.5 text-teal transition-colors hover:bg-teal/20 cursor-pointer"
+                title={t.viewOnMap}
+                aria-label={t.viewOnMap}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                  <line x1="8" y1="2" x2="8" y2="18" />
+                  <line x1="16" y1="6" x2="16" y2="22" />
+                </svg>
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Phone number */}
+        {place.phoneNumber && (
+          <div className="flex items-center gap-1.5 text-sm text-navy/50">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="shrink-0 text-coral/60"
+              aria-hidden="true"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = `tel:${place.phoneNumber!.replace(/\s/g, "")}`;
+              }}
+              className="line-clamp-1 transition-colors hover:text-coral text-start"
+              dir="ltr"
+            >
+              {place.phoneNumber}
+            </button>
           </div>
         )}
 
